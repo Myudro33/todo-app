@@ -1,5 +1,5 @@
 import React from "react";
-import {useContext,useState } from "react";
+import { useContext, useState } from "react";
 import "../App.css";
 import { UserContext } from "../Context/UserContext";
 import useKey from "@rooks/use-key";
@@ -7,18 +7,18 @@ import useKey from "@rooks/use-key";
 const Input = ({ theme }) => {
   const [todoText, settodoText] = useState("");
   const [placeHolder, setplaceHolder] = useState(false);
-  const {value,setValue} = useContext(UserContext)
+  const { value, setValue } = useContext(UserContext);
   const sendTodoText = () => {
-    if (todoText !== "" && todoText.length > 5) {
-      setValue(todoText)
-      settodoText('')
-      setplaceHolder(false)
-    }
-    if (todoText.length < 5) {
+    if (todoText !== "" && todoText.length > 4) {
+      setValue(todoText);
+      settodoText("");
+      setplaceHolder(false);
+    } else {
       settodoText("");
       setplaceHolder(true);
     }
   };
+  
   useKey(["Enter"], sendTodoText);
   return (
     <div

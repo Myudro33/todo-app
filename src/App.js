@@ -11,6 +11,7 @@ const App = () => {
   const [theme, settheme] = useState(false);
   const [value,setValue] = useState('')
   const [data, setdata] = useState([])
+  const [options,setOptions] = useState('All')
   return (
     <div
       className={`w-full ${
@@ -33,10 +34,10 @@ const App = () => {
       <div className="w-[34rem] h-[37rem]  relative mt-10 rounded-lg">
         <UserContext.Provider  value={{value,setValue,data,setdata}}>
           <Input theme={theme} />
-          <List theme={theme} />
-        </UserContext.Provider>
+          <List options={options} theme={theme} />
         <hr className="w-full" />
-        <TodoOptions theme={theme} />
+        <TodoOptions options={options} setOptions={setOptions} theme={theme} />
+        </UserContext.Provider>
         <div className="flex justify-center items-center w-full h-14 text-[#9394a5] text-sm tracking-wider">
           Drag and drop to reorder list
         </div>
