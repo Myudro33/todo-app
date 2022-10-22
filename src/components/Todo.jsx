@@ -16,7 +16,12 @@ const complete = ()=>{
    })
     setdata(newData)
   }
-  console.log(completedd);
+
+
+const removeTodo = () =>{
+setdata(data.filter((todo)=>todo.name!==name))
+}
+console.log(name);
   return (
     <div className="w-full shrink-0 h-16 flex items-center justify-between p-3 border-b-2 border-gray-300">
       <div className="w-2/3 flex">
@@ -39,7 +44,7 @@ const complete = ()=>{
         </h1>
       </div>
 
-      <GrFormClose className="w-6 h-6 cursor-pointer " />
+      <GrFormClose onClick={removeTodo} className="w-6 h-6 cursor-pointer " />
     </div>
   );
 };
