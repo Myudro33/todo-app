@@ -23,7 +23,7 @@ const List = ({ theme }) => {
     >
       {data.length>0?(
         <>{data.map((todo)=>(
-          <Todo key={todo.id} name={todo.name} id={todo.id} completed={todo.completed} />
+          <Todo key={todo.id} name={todo.name} id={todo.id} completedd={todo.completed} />
         ))}</>
       ):(<h1 className="m-auto text-[#9394a5]  text-3xl">You don't have any task...</h1>)}
     </div>
