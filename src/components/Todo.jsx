@@ -3,10 +3,8 @@ import { useContext } from "react";
 import { BiCheck } from "react-icons/bi";
 import styled from "styled-components";
 import { CloseOutline } from "@styled-icons/evaicons-outline/";
-import { RiCloseCircleFill, RiCloseCircleLine } from "react-icons/ri";
 import "../App.css";
 import { UserContext } from "../Context/UserContext";
-let themee = "";
 const Close = styled(CloseOutline)`
   width: 20px;
   cursor: pointer;
@@ -16,7 +14,6 @@ const Close = styled(CloseOutline)`
   }
 `;
 const Todo = ({ name, completedd, id, theme }) => {
-  themee = theme;
   const { data, setdata } = useContext(UserContext);
   const complete = () => {
     const newData = data.map((todo) => {

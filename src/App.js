@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { iconMoon, iconSun } from "./assets/svg/svg";
 import desktopDark from "./assets/jpg/bg-desktop-dark.jpg";
 import desktopLight from "./assets/jpg/bg-desktop-light.jpg";
@@ -12,6 +12,9 @@ const App = () => {
   const [value,setValue] = useState('')
   const [data, setdata] = useState([])
   const [options,setOptions] = useState('All')
+  useEffect(() => {
+    localStorage.setItem('data',JSON.stringify(data))
+  },[data])
   return (
     <div
       className={`w-full ${
