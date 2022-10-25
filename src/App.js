@@ -22,12 +22,12 @@ const App = () => {
       } h-screen flex flex-col items-center`}
     >
       <img
-        className="absolute w-full h-[17rem] object-cover"
+        className="absolute w-full md:h-[17rem] xs:h-[14rem] xs:object-cover md:object-cover"
         src={theme ? desktopDark : desktopLight}
         alt="bg"
       />
       <div className="relative flex  md:w-[34rem] xs:w-[90%] justify-between  mt-8">
-        <h1 className="text-4xl tracking-[0.5rem] font-semibold text-white">
+        <h1 className="md:text-4xl xs:text-2xl tracking-[0.5rem] font-semibold text-white">
           TODO
         </h1>
         <button onClick={() => settheme((prev) => !prev)}>

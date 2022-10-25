@@ -9,46 +9,81 @@ const TodoOptions = ({ theme, options, setOptions }) => {
     setdata(data.filter((todo) => todo.completed !== true));
   };
   return (
-    <div
-      className={`${
-        theme ? "bg-[#393a4c]" : "bg-white"
-      } rounded-b-lg w-full h-14 p-4 text-[#9394a5] flex justify-between font-semibold text-sm`}
-    >
-      <p>{todos.length} tasks left</p>
-      <span className="flex w-44 justify-between">
+    <div>
+      <div
+        className={`${
+          theme ? "bg-[#393a4c]" : "bg-white"
+        } rounded-b-lg w-full h-14 p-4 text-[#9394a5] shadow-md flex justify-between font-semibold text-sm`}
+      >
+        <p>{todos.length} tasks left</p>
+        <span className="flex w-44 justify-between md:flex xs:hidden">
+          <p
+            className={`hover:text-black duration-100 cursor-pointer ${
+              options === "All" ? "text-[#3a7bfd]" : ""
+            }`}
+            onClick={() => setOptions("All")}
+          >
+            All
+          </p>
+          <p
+            className={`hover:text-black duration-100 cursor-pointer ${
+              options === "Active" ? "text-[#3a7bfd]" : ""
+            }`}
+            onClick={() => setOptions("Active")}
+          >
+            Active
+          </p>
+          <p
+            className={`hover:text-black duration-100 cursor-pointer ${
+              options === "Completed" ? "text-[#3a7bfd]" : ""
+            }`}
+            onClick={() => setOptions("Completed")}
+          >
+            Completed
+          </p>
+        </span>
         <p
-          className={`hover:text-black duration-100 cursor-pointer ${
-            options === "All" ? "text-[#3a7bfd]" : ""
+          onClick={clearCompletedTodos}
+          className={`cursor-pointer ${
+            theme ? "hover:text-white" : "hover:text-black"
           }`}
-          onClick={() => setOptions("All")}
         >
-          All
+          Clear Completed
         </p>
-        <p
-          className={`hover:text-black duration-100 cursor-pointer ${
-            options === "Active" ? "text-[#3a7bfd]" : ""
-          }`}
-          onClick={() => setOptions("Active")}
-        >
-          Active
-        </p>
-        <p
-          className={`hover:text-black duration-100 cursor-pointer ${
-            options === "Completed" ? "text-[#3a7bfd]" : ""
-          }`}
-          onClick={() => setOptions("Completed")}
-        >
-          Completed
-        </p>
-      </span>
-      <p
-        onClick={clearCompletedTodos}
-        className={`cursor-pointer ${
-          theme ? "hover:text-white" : "hover:text-black"
+      </div>
+
+      <div
+        className={`md:hidden flex justify-center items-center mt-5 shadow-md w-full rounded-lg h-14 ${
+          theme ? "bg-[#393a4c]" : "bg-white"
         }`}
       >
-        Clear Completed
-      </p>
+        <span className="flex w-44 justify-between text-[#9394a5] font-semibold">
+          <p
+            className={`hover:text-black duration-100 cursor-pointer ${
+              options === "All" ? "text-[#3a7bfd]" : ""
+            }`}
+            onClick={() => setOptions("All")}
+          >
+            All
+          </p>
+          <p
+            className={`hover:text-black duration-100 cursor-pointer ${
+              options === "Active" ? "text-[#3a7bfd]" : ""
+            }`}
+            onClick={() => setOptions("Active")}
+          >
+            Active
+          </p>
+          <p
+            className={`hover:text-black duration-100 cursor-pointer ${
+              options === "Completed" ? "text-[#3a7bfd]" : ""
+            }`}
+            onClick={() => setOptions("Completed")}
+          >
+            Completed
+          </p>
+        </span>
+      </div>
     </div>
   );
 };

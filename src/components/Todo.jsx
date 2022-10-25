@@ -30,7 +30,7 @@ const Todo = ({ name, completedd, id, theme }) => {
   };
 
   return (
-    <div  className="w-full shrink-0 h-16 flex items-center justify-between p-3 border-b-2 border-gray-300">
+    <div draggable='true'  className="w-full shrink-0 h-16 flex items-center justify-between p-3 border-b-2 border-gray-300">
       <div className="w-2/3 flex">
         <div
           className={`w-7  h-7 rounded-full ${

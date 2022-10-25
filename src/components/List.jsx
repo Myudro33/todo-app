@@ -27,18 +27,17 @@ const List = ({ theme, options }) => {
     setdata(newData);
   }, []);
   const handleOnDragEnd = (result) => {
-    if(!result.destination) return
+    if (!result.destination) return;
     const items = Array.from(todos);
     const [reorderedTodos] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedTodos);
-    setUpdatedTodos(items)
+    setUpdatedTodos(items);
   };
-
   return (
     <div
       className={`w-full h-96 rounded-t-lg overflow-scroll box-border ${
         theme ? "bg-[#393a4c]" : "bg-white"
-      } flex flex-col`}
+      } flex flex-col shadow-lg `}
     >
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId="todos">
@@ -73,41 +72,89 @@ const List = ({ theme, options }) => {
           )}
         </Droppable>
       </DragDropContext>
-      {/* {data.length < 1 && options === "All" && (
-          <h1 className="m-auto text-[#9394a5]  text-3xl">
-            You don't have any task...
-          </h1>
-        )}
-        {options === "Active" &&
-          activeTodos.map((todo) => (
-            <Todo
-              theme={theme}
-              key={todo.id}
-              name={todo.name}
-              id={todo.id}
-              completedd={todo.completed}
-            />
-          ))}
-        {activeTodos.length < 1 && options === "Active" && (
-          <h1 className="m-auto text-[#9394a5]  text-3xl">
-            You don't have any task...
-          </h1>
-        )}
-        {options === "Completed" &&
-          completedTodos.map((todo) => (
-            <Todo
-              theme={theme}
-              key={todo.id}
-              name={todo.name}
-              id={todo.id}
-              completedd={todo.completed}
-            />
-          ))}
-        {completedTodos.length < 1 && options === "Completed" && (
-          <h1 className="m-auto text-[#9394a5]  text-3xl">
-            You don't have any task...
-          </h1>
-        )} */}
+      {todos.length < 1 && options === "All" && (
+        <h1 className="m-auto text-center text-[#9394a5]  text-3xl">
+          You don't have any <br className="md:hidden"/> task...
+        </h1>
+      )}
+
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Droppable droppableId="todos">
+          {(provided) => (
+            <div
+              className="todos"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {options === "Active" &&
+                activeTodos.map((todo, index) => (
+                  <Draggable key={todo.id} draggableId={todo.id} index={index}>
+                    {(provided) => (
+                      <div
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                      >
+                        <Todo
+                          theme={theme}
+                          key={todo.id}
+                          name={todo.name}
+                          id={todo.id}
+                          completedd={todo.completed}
+                        />
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+      {activeTodos.length < 1 && options === "Active" && (
+        <h1 className="m-auto text-center text-[#9394a5]  text-3xl">
+          You don't have any <br className="md:hidden"/> task...
+        </h1>
+      )}
+
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Droppable droppableId="todos">
+          {(provided) => (
+            <div
+              className="todos"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {options === "Completed" &&
+                completedTodos.map((todo, index) => (
+                  <Draggable key={todo.id} draggableId={todo.id} index={index}>
+                    {(provided) => (
+                      <div
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                      >
+                        <Todo
+                          theme={theme}
+                          key={todo.id}
+                          name={todo.name}
+                          id={todo.id}
+                          completedd={todo.completed}
+                        />
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+      {completedTodos.length < 1 && options === "Completed" && (
+        <h1 className="m-auto text-center text-[#9394a5]  text-3xl">
+          You don't have any <br className="md:hidden"/> task...
+        </h1>
+      )}
     </div>
   );
 };
