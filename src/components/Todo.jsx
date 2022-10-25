@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { CloseOutline } from "@styled-icons/evaicons-outline/";
 import "../App.css";
 import { UserContext } from "../Context/UserContext";
+
 const Close = styled(CloseOutline)`
   width: 20px;
   cursor: pointer;
@@ -27,11 +28,9 @@ const Todo = ({ name, completedd, id, theme }) => {
   const removeTodo = () => {
     setdata(data.filter((todo) => todo.name !== name));
   };
+
   return (
-    <div
-      draggable="true"
-      className="w-full shrink-0 h-16 flex items-center justify-between p-3 border-b-2 border-gray-300"
-    >
+    <div  className="w-full shrink-0 h-16 flex items-center justify-between p-3 border-b-2 border-gray-300">
       <div className="w-2/3 flex">
         <div
           className={`w-7  h-7 rounded-full ${

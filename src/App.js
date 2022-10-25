@@ -26,7 +26,7 @@ const App = () => {
         src={theme ? desktopDark : desktopLight}
         alt="bg"
       />
-      <div className="relative flex  w-[34rem] justify-between  mt-8">
+      <div className="relative flex  md:w-[34rem] xs:w-[90%] justify-between  mt-8">
         <h1 className="text-4xl tracking-[0.5rem] font-semibold text-white">
           TODO
         </h1>
@@ -34,7 +34,7 @@ const App = () => {
           {theme ? iconMoon : iconSun}
         </button>
       </div>
-      <div className="w-[34rem] h-[37rem]  relative mt-10 rounded-lg">
+      <div className="md:w-[34rem] xs:w-[90%] h-[37rem]  relative mt-10 rounded-lg">
         <UserContext.Provider  value={{value,setValue,data,setdata}}>
           <Input theme={theme} />
           <List options={options} theme={theme} />
